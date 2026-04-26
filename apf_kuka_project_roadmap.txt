@@ -1,0 +1,190 @@
+PROJECT ROADMAP: Artificial Potential Field (APF) for KUKA IIWA (MATLAB .m)
+
+--------------------------------------------------
+OVERVIEW
+--------------------------------------------------
+Goal:
+Implement Artificial Potential Field (APF) based collision avoidance for a 7-DOF KUKA iiwa robot in MATLAB using a script (.m file).
+
+Core Idea:
+Compute forces in Cartesian space → convert to joint velocities → update robot configuration iteratively.
+
+--------------------------------------------------
+PHASE 1: MATLAB & ROBOT SETUP (Day 1-2)
+--------------------------------------------------
+Objectives:
+- Load KUKA iiwa model
+- Understand joint configuration (q)
+- Extract end-effector position
+
+Topics to Learn:
+- Robotics System Toolbox basics
+- Forward Kinematics
+- Homogeneous transformations
+
+Key Functions:
+- loadrobot()
+- getTransform()
+- tform2trvec()
+
+YouTube:
+- "MATLAB Robotics Toolbox Tutorial"
+- "Forward Kinematics Explained Simply"
+
+--------------------------------------------------
+PHASE 2: JACOBIAN UNDERSTANDING (Day 2-3)
+--------------------------------------------------
+Objectives:
+- Understand mapping between joint velocities and end-effector velocity
+
+Topics:
+- Jacobian matrix
+- Linear vs angular velocity
+- Pseudoinverse
+
+Key Equation:
+x_dot = J(q) * q_dot
+
+MATLAB:
+- geometricJacobian()
+- pinv()
+
+YouTube:
+- "Jacobian Matrix Robotics Explained"
+- "Velocity Kinematics Robot Manipulators"
+
+--------------------------------------------------
+PHASE 3: ATTRACTIVE FORCE (Day 3-4)
+--------------------------------------------------
+Objectives:
+- Move robot toward goal without obstacles
+
+Formula:
+F_att = -k_att * (x - goal)
+
+Topics:
+- Gradient descent
+- Vector fields
+
+Outcome:
+Robot reaches goal in free space
+
+YouTube:
+- "Artificial Potential Field Explained"
+
+--------------------------------------------------
+PHASE 4: REPULSIVE FORCE (Day 5-6)
+--------------------------------------------------
+Objectives:
+- Add obstacle avoidance
+
+Topics:
+- Distance calculation (point to sphere)
+- Unit vectors
+- Threshold distance
+
+Formula:
+Active only when d < d0
+
+Outcome:
+Robot avoids obstacles
+
+YouTube:
+- "Potential Field Obstacle Avoidance MATLAB"
+
+--------------------------------------------------
+PHASE 5: FULL APF + MOTION LOOP (Day 6-7)
+--------------------------------------------------
+Objectives:
+- Combine forces and move robot
+
+Steps:
+1. Compute F_att
+2. Compute F_rep
+3. F_total = sum
+4. Convert to q_dot
+5. Update q
+
+Topics:
+- Euler integration
+- Stability (dt tuning)
+
+--------------------------------------------------
+PHASE 6: LOCAL MINIMA HANDLING (Day 8-9)
+--------------------------------------------------
+Objectives:
+- Detect and escape stuck conditions
+
+Detection:
+- Force near zero but not at goal
+
+Strategies:
+- Random perturbation
+- Temporary waypoint
+
+Outcome:
+Robot successfully escapes traps
+
+YouTube:
+- "Local Minima Problem Potential Field"
+
+--------------------------------------------------
+PHASE 7: VISUALIZATION (Day 10-11)
+--------------------------------------------------
+Objectives:
+- Plot results
+
+Tasks:
+- Plot trajectory (plot3)
+- Draw obstacles (sphere)
+- Animate robot (show)
+
+Topics:
+- MATLAB plotting
+- 3D visualization
+
+--------------------------------------------------
+PHASE 8: TESTING & FINALIZATION (Day 11-12)
+--------------------------------------------------
+Objectives:
+- Validate performance
+
+Tasks:
+- Test 2+ obstacle configurations
+- Plot joint velocities
+- Compare trajectories
+
+Deliverables:
+- Working simulation
+- Graphs
+- Clean code
+
+--------------------------------------------------
+KEY TOPICS SUMMARY
+--------------------------------------------------
+1. Forward Kinematics
+2. Jacobian Matrix
+3. Pseudoinverse
+4. Artificial Potential Fields
+5. Gradient-based motion
+6. Distance geometry
+7. Numerical integration
+8. Local minima problem
+
+--------------------------------------------------
+RECOMMENDED LEARNING STRATEGY
+--------------------------------------------------
+1. Understand concept briefly
+2. Immediately implement in MATLAB
+3. Debug and iterate
+4. Move to next phase
+
+Avoid:
+- Over-watching tutorials
+- Over-complicating math
+
+--------------------------------------------------
+END OF ROADMAP
+--------------------------------------------------
+
+/media/haider/Drive1/University Work/semester_08/robotics/project
