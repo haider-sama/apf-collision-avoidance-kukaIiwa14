@@ -188,3 +188,5 @@ END OF ROADMAP
 --------------------------------------------------
 
 /media/haider/Drive1/University Work/semester_08/robotics/project
+
+https://khatib.stanford.edu/publications/pdfs/Khatib_1986_IJRR.pdf
